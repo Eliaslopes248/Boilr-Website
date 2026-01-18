@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boilr Documentation | High-Performance Scaffolding</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00BAFF",
+              "background-light": "#F8FAFC",
+              "background-dark": "#0B1117",
+              "card-dark": "#161B22",
+              "border-dark": "#30363D",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "8px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .code-block {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363D;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<!-- COMPONENT: Header -->
+<header class="fixed top-0 z-50 w-full border-b border-slate-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-icons-outlined text-white text-xl">bolt</span>
+</div>
+<span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white uppercase">Boilr</span>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-border-dark">v2.4.0</span>
+</div>
+<div class="flex-1 max-w-md px-8 hidden md:block">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+<span class="material-icons-outlined text-sm">search</span>
+</span>
+<input class="block w-full pl-10 pr-3 py-2 border border-slate-200 dark:border-border-dark rounded-md leading-5 bg-white dark:bg-slate-900 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Search documentation..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-md border border-slate-200 dark:border-border-dark bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.382 1.235-3.221-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.839 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+<span>Star on GitHub</span>
+</a>
+</div>
+</div>
+</header>
+<!-- END COMPONENT: Header -->
+<div class="flex pt-16 max-w-7xl mx-auto">
+<!-- COMPONENT: Sidebar Navigation -->
+<aside class="hidden lg:block w-64 fixed h-[calc(100vh-4rem)] overflow-y-auto border-r border-slate-200 dark:border-border-dark p-6">
+<nav class="space-y-8">
+<div>
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Getting Started</h3>
+<ul class="space-y-2">
+<li><a class="text-primary font-medium flex items-center gap-2" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Introduction</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#installation">Installation</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#usage">Usage</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Core Concepts</h3>
+<ul class="space-y-2">
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Available Templates</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Custom Templates</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Infrastructure as Code</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Integrations</h3>
+<ul class="space-y-2">
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">AWS Cloud</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Docker Support</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Vercel &amp; Fly.io</a></li>
+</ul>
+</div>
+</nav>
+</aside>
+<!-- END COMPONENT: Sidebar Navigation -->
+<!-- COMPONENT: Main Content -->
+<main class="flex-1 lg:ml-64 px-4 sm:px-8 lg:px-12 py-10">
+<div class="max-w-3xl">
+<section class="mb-16">
+<h1 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Documentation</h1>
+<p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Boilr is a C++ powered high-performance CLI tool designed for instant scaffolding of modern full-stack applications with integrated cloud infrastructure.
+                    </p>
+</section>
+<section class="mb-16 scroll-mt-24" id="installation">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-icons-outlined text-primary">download</span>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Installation</h2>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden">
+<div class="flex border-b border-slate-200 dark:border-border-dark px-2">
+<button class="px-6 py-3 text-sm font-medium border-b-2 border-primary text-primary">Mac / Linux</button>
+<button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">Windows (WSL)</button>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Run this command in your terminal to install the latest version of Boilr.</p>
+<div class="code-block relative group bg-slate-900 rounded-lg p-4 text-slate-300 text-sm border border-slate-700">
+<span class="text-primary mr-2">$</span> curl -sSL https://boilr.sh/install | sh
+                                <button class="absolute top-3 right-3 p-1.5 rounded-md hover:bg-slate-700 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-icons-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16 scroll-mt-24" id="usage">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-icons-outlined text-primary">terminal</span>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Command Usage</h2>
+</div>
+<p class="text-slate-600 dark:text-slate-400 mb-8">
+                        The <code>boilr</code> CLI follows a simple flag-based structure. Most commands start with an action flag followed by your configuration.
+                    </p>
+<div class="overflow-x-auto border border-slate-200 dark:border-border-dark rounded-xl">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-border-dark text-slate-900 dark:text-white">
+<tr>
+<th class="px-6 py-4 font-semibold">Flag</th>
+<th class="px-6 py-4 font-semibold">Name</th>
+<th class="px-6 py-4 font-semibold">Description</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-border-dark">
+<tr>
+<td class="px-6 py-4 font-mono text-primary">-init</td>
+<td class="px-6 py-4 font-medium">Initialize</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Initialize a new project in the current directory.</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-primary">-TN</td>
+<td class="px-6 py-4 font-medium">Template Name</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Specify which scaffold template to use (e.g., node-server).</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-primary">-N</td>
+<td class="px-6 py-4 font-medium">Project Name</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">The name of the resulting folder/project.</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-primary">-aws</td>
+<td class="px-6 py-4 font-medium">AWS Enable</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Injects AWS SDK and basic IAM roles into the project.</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-mono text-primary">-pr</td>
+<td class="px-6 py-4 font-medium">Production</td>
+<td class="px-6 py-4 text-slate-500 dark:text-slate-400">Optimizes the build for production environment.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-icons-outlined text-primary">category</span>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Templates Registry</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-5 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl hover:border-primary transition-colors group">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-primary text-sm">node-server-ts</span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500">Popular</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Express.js backend with TypeScript, Jest, and Prisma boilerplate.</p>
+</div>
+<div class="p-5 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl hover:border-primary transition-colors group">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-primary text-sm">react-app-ts</span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500">Official</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Vite-powered React app with Tailwind CSS and Framer Motion.</p>
+</div>
+<div class="p-5 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl hover:border-primary transition-colors group">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-primary text-sm">spring-boot-java</span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500">Enterprise</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Robust Java Spring Boot microservice with native Docker support.</p>
+</div>
+<div class="p-5 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-xl hover:border-primary transition-colors group">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-primary text-sm">nextjs-edge</span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500">Edge</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">Next.js App Router template optimized for Edge runtimes.</p>
+</div>
+</div>
+</section>
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-icons-outlined text-primary">lightbulb</span>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Examples</h2>
+</div>
+<div class="space-y-6">
+<div>
+<h4 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Create a new React project with AWS integration:</h4>
+<div class="code-block bg-slate-900 rounded-lg p-4 text-slate-300 text-sm border border-slate-700">
+<span class="text-primary mr-2">$</span> boilr -TN react-app-ts -N my-awesome-app -aws
+                            </div>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Initialize a minimal Node server for production:</h4>
+<div class="code-block bg-slate-900 rounded-lg p-4 text-slate-300 text-sm border border-slate-700">
+<span class="text-primary mr-2">$</span> boilr -TN node-server-ts -N api-backend -pr
+                            </div>
+</div>
+</div>
+</section>
+<section class="mt-20 py-12 border-t border-slate-200 dark:border-border-dark text-center">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 italic">START BUILDING.</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-8">Join 10,000+ developers shipping faster with Boilr.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-8 py-3 bg-primary text-slate-900 font-bold rounded-md hover:bg-opacity-90 transition-all uppercase tracking-tight flex items-center justify-center gap-2">
+                            View on GitHub <span class="material-icons-outlined text-sm">star</span>
+</button>
+<button class="w-full sm:w-auto px-8 py-3 border border-slate-300 dark:border-border-dark text-slate-700 dark:text-slate-300 font-semibold rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition-all uppercase tracking-tight">
+                            Read Full Specs
+                        </button>
+</div>
+</section>
+</div>
+</main>
+<!-- END COMPONENT: Main Content -->
+<!-- COMPONENT: Right Sidebar (On This Page) -->
+<aside class="hidden xl:block w-64 fixed right-0 h-[calc(100vh-4rem)] overflow-y-auto p-8">
+<h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase mb-4">On this page</h4>
+<ul class="space-y-3 text-sm border-l border-slate-200 dark:border-border-dark">
+<li class="pl-4 border-l-2 border-primary -ml-[2px]"><a class="text-primary" href="#">Introduction</a></li>
+<li class="pl-4 hover:text-primary transition-colors text-slate-500 dark:text-slate-400"><a href="#installation">Installation</a></li>
+<li class="pl-4 hover:text-primary transition-colors text-slate-500 dark:text-slate-400"><a href="#usage">Command Usage</a></li>
+<li class="pl-4 hover:text-primary transition-colors text-slate-500 dark:text-slate-400"><a href="#templates">Templates Registry</a></li>
+<li class="pl-4 hover:text-primary transition-colors text-slate-500 dark:text-slate-400"><a href="#examples">Examples</a></li>
+</ul>
+<div class="mt-12 p-4 rounded-xl bg-primary/10 border border-primary/20">
+<p class="text-xs font-semibold text-primary mb-2">PRO TIP</p>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Use the <code>-h</code> flag at any time to see the full list of available flags and descriptions.</p>
+</div>
+</aside>
+<!-- END COMPONENT: Right Sidebar (On This Page) -->
+</div>
+<!-- COMPONENT: Mobile Menu Button -->
+<div class="fixed bottom-6 right-6 lg:hidden">
+<button class="w-14 h-14 bg-primary rounded-full shadow-lg flex items-center justify-center text-white">
+<span class="material-icons-outlined">menu</span>
+</button>
+</div>
+<!-- END COMPONENT: Mobile Menu Button -->
+<!-- COMPONENT: Footer -->
+<footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200 dark:border-border-dark">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<div class="w-5 h-5 bg-primary rounded flex items-center justify-center">
+<span class="material-icons-outlined text-[10px] text-white">bolt</span>
+</div>
+<span class="font-bold uppercase tracking-widest text-slate-900 dark:text-white">Boilr CLI</span>
+</div>
+<p>© 2024 BOILR CORE SYSTEMS. ALL RIGHTS RESERVED. V2.4.0-STABLE</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary" href="#">Twitter</a>
+<a class="hover:text-primary" href="#">Discord</a>
+<a class="hover:text-primary" href="#">Status</a>
+</div>
+</div>
+</footer>
+<!-- END COMPONENT: Footer -->
+
+</body></html>
