@@ -23,7 +23,7 @@ export default function Footer() {
             </a>
             <a
               className="w-full sm:w-auto px-8 py-4 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl hover:bg-slate-300 dark:hover:bg-slate-700 transition-all"
-              href="/docs"
+              href="/docs-main"
             >
               READ DOCUMENTATION
             </a>
