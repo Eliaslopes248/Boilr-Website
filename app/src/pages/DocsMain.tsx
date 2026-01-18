@@ -1,6 +1,5 @@
 import NavBar from '../components/home-page/NavBar'
 import DocsSideMenu from '../components/docs-page/DocsSideMenu'
-import DocsFooter from '../components/docs-page/DocsFooter'
 import DocsMainHeaderSection from '../components/docs-page/DocsMainHeaderSection'
 import DocsMainInstallationSection from '../components/docs-page/DocsMainInstallationSection'
 import DocsMainCommandArgs from '../components/docs-page/DocsMainCommandArgs'
