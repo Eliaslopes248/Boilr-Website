@@ -2,9 +2,13 @@ import React from "react"
 
 export default function DocsMainInstallationSection() {
 
-  const [installationType, setInstallationType ] = React.useState<string>("Mac / Linux");
+  const [installationType, setInstallationType ] = React.useState<string>("Mac");
   // terminal command values
-  const br_install_cmd: string = "curl -L https://github.com/Eliaslopes248/Boilr-CLI-TOOL/releases/download/v1.0.0-beta/br -o br && chmod +x $_";
+  const installation_cmds: any = {
+      "Mac" :       {cmd: `curl -fsSL https://raw.githubusercontent.com/Eliaslopes248/Boilr-CLI-TOOL/main/releases/installer.sh | bash`, addPATH: `sudo mv ./br /usr/local/bin/`},
+      "Linux" :     {cmd: `curl -fsSL https://raw.githubusercontent.com/Eliaslopes248/Boilr-CLI-TOOL/main/releases/installer.sh | bash`, addPATH: `sudo mv ./br /usr/local/bin/`},
+      "Windows" :   {cmd: `irm https://raw.githubusercontent.com/Eliaslopes248/Boilr-CLI-TOOL/main/releases/installer.ps1 | iex`,        addPATH: `Move-Item -Path ./br.exe -Destination $env:USERPROFILE\\AppData\\Local\\Microsoft\\WindowsApps\\br.exe`},
+  };
 
   function copyToClipboard (
     e: React.MouseEvent<HTMLButtonElement>, 
@@ -46,11 +50,14 @@ export default function DocsMainInstallationSection() {
       <div className="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-border-dark overflow-hidden">
         {/* Platform Tabs */}
         <div className="flex border-b border-slate-200 dark:border-border-dark px-2">
-          <button onClick={handleInstallTypeChange} name="Mac / Linux" className={`px-6 py-3 text-sm font-medium ${installationType =="Mac / Linux"? "border-b-2 text-primary" : "hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"} border-primary `}>
-            Mac / Linux
+          <button onClick={handleInstallTypeChange} name="Mac" className={`px-6 py-3 text-sm font-medium ${installationType =="Mac"? "border-b-2 text-primary" : "hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"} border-primary `}>
+            Mac
           </button>
-          <button onClick={handleInstallTypeChange} name="Windows (WSL)" className={`px-6 py-3 ${installationType == "Windows (WSL)"? "border-b-2 border-primary text-primary" : " hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"} text-sm font-medium `}>
-            Windows (WSL)
+          <button onClick={handleInstallTypeChange} name="Linux" className={`px-6 py-3 ${installationType == "Linux"? "border-b-2 border-primary text-primary" : " hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"} text-sm font-medium `}>
+            Linux
+          </button>
+          <button onClick={handleInstallTypeChange} name="Windows" className={`px-6 py-3 ${installationType == "Windows"? "border-b-2 border-primary text-primary" : " hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"} text-sm font-medium `}>
+            Windows
           </button>
         </div>
         {/* Installation Content */}
@@ -61,17 +68,16 @@ export default function DocsMainInstallationSection() {
           {/* Code Block with Copy Button */}
           <div className="code-block relative group bg-slate-900 rounded-lg p-4 text-slate-300 text-[15px] border border-slate-700 overflow-hidden">
             <div className="flex flex-col gap-2 overflow-x-auto min-w-0">
-              {installationType == "Windows (WSL)" ? (
-                <p className="whitespace-nowrap">
-                  <span className="text-primary mr-2">$</span> wsl --install
-                </p>
-              ) : null}
-              <p className="whitespace-nowrap">
-                <span className="text-primary mr-2">$</span> {br_install_cmd}
-              </p>
+              <div className="whitespace-nowrap">
+                <p><span className="text-primary mr-2">$</span> {installation_cmds[installationType].cmd}</p>
+                <p><span className="text-primary mr-2">$</span></p>
+                <p><span className="text-primary mr-2">$</span> # (OPTIONAL) Add to $PATH</p>
+                
+                <p><span className="text-primary mr-2">$</span> {installation_cmds[installationType].addPATH}</p>
+              </div>
             </div>
             <button
-              onClick={(e)=> copyToClipboard(e, br_install_cmd)}
+              onClick={(e)=> copyToClipboard(e, `${installation_cmds[installationType].cmd}${installation_cmds[installationType].addPATH ? '\n' + installation_cmds[installationType].addPATH : ''}`)}
               className="absolute top-3 right-3 p-1.5 rounded-md hover:bg-slate-700 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
               title="Copy to clipboard"
             >

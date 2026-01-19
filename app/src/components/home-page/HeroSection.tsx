@@ -1,7 +1,7 @@
 export default function HeroSection() {
   
 // terminal command values
-const br_install_cmd: string = "curl -L https://github.com/Eliaslopes248/Boilr-CLI-TOOL/releases/download/v1.0.0-beta/br -o br && chmod +x $_";
+const br_install_cmd: string = `curl -fsSL https://raw.githubusercontent.com/Eliaslopes248/Boilr-CLI-TOOL/main/releases/installer.sh | bash`;
 
 // copy to clip board method
 function copyToClipboard (
